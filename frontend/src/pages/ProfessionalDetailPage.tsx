@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
 import { useProfessional } from '../hooks/useProfessionals';
-import { SITE_NAME, SITE_URL, SPECIALTY_MAP } from '../lib/constants';
+import { SITE_NAME, SITE_URL, SPECIALTY_MAP, REFERRAL_EMAIL } from '../lib/constants';
 import { extractTextFromBlocks } from '../lib/blocks';
 import { getStrapiMediaUrl } from '../lib/strapi';
 import ProfileHeader from '../components/profile/ProfileHeader';
@@ -153,7 +153,7 @@ export default function ProfessionalDetailPage() {
               {professional.email && (
                 <a
                   href={`mailto:${professional.email}`}
-                  className="block mt-2 text-center text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors"
+                  className="block mt-2 text-center text-blue-600 hover:text-blue-800 text-sm font-medium break-all transition-colors"
                 >
                   {professional.email}
                 </a>
@@ -161,6 +161,20 @@ export default function ProfessionalDetailPage() {
             </section>
 
             <SocialLinks links={professional.socialLinks || []} />
+
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-8 text-sm text-gray-600">
+              <p>
+                <strong>¿Tuviste una experiencia con este profesional?</strong>{' '}
+                Ayudanos a mantener la calidad del directorio. Escribinos a{' '}
+                <a
+                  href={`mailto:${REFERRAL_EMAIL}`}
+                  className="text-blue-600 hover:underline break-all"
+                >
+                  {REFERRAL_EMAIL}
+                </a>{' '}
+                y contanos tu experiencia.
+              </p>
+            </div>
           </div>
         </div>
       </div>
