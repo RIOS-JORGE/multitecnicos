@@ -192,7 +192,7 @@ Sitemap: https://multitecnicos.com.ar/sitemap.xml
 ## Estructura del proyecto
 
 ```
-profesionales-directorio/
+multitecnicos/
 ├── backend/                          # Strapi 5 CMS
 │   ├── config/middlewares.ts         # CORS (localhost:5173)
 │   ├── src/
@@ -268,8 +268,8 @@ Creá dos registros **A** en tu proveedor de DNS apuntando a la IP de la VPS:
 ### Backend (Strapi)
 
 ```bash
-git clone <tu-repo> profesionales-directorio
-cd profesionales-directorio/backend
+git clone <tu-repo> multitecnicos
+cd multitecnicos/backend
 
 # Variables de entorno
 cp .env.example .env
@@ -349,7 +349,7 @@ Strapi lee esta variable desde `config/middlewares.ts` y permite que el frontend
 ### Frontend (Vite)
 
 ```bash
-cd profesionales-directorio/frontend
+cd multitecnicos/frontend
 
 # Build con variables de entorno
 VITE_SITE_URL=https://multitecnicos.com.ar \
@@ -364,7 +364,7 @@ Servilo con Nginx:
 server {
     listen 80;
     server_name multitecnicos.com.ar;
-    root /ruta/a/profesionales-directorio/frontend/dist;
+    root /ruta/a/multitecnicos/frontend/dist;
 
     index index.html;
 
@@ -405,7 +405,7 @@ Strapi con SQLite almacena los datos en `backend/.tmp/data.db`. Copiá este arch
 # /root/backup-strapi.sh
 BACKUP_DIR=/root/backups/strapi
 mkdir -p "$BACKUP_DIR"
-cp /ruta/a/profesionales-directorio/backend/.tmp/data.db \
+cp /ruta/a/multitecnicos/backend/.tmp/data.db \
    "$BACKUP_DIR/data-$(date +%F).db"
 # Opcional: rsync a otro servidor, subir a S3, etc.
 ```
@@ -424,7 +424,7 @@ crontab -e
 Cuando hacés cambios en el repo, el ciclo de deploy es:
 
 ```bash
-cd /ruta/a/profesionales-directorio
+cd /ruta/a/multitecnicos
 git pull origin main
 
 # Si cambió backend/
