@@ -11,7 +11,7 @@
  */
 
 const STRAPI_URL = process.env.VITE_STRAPI_URL || '';
-const BASE_URL = process.env.VITE_SITE_URL || process.env.SITE_URL || 'https://tudominio.com';
+const BASE_URL = process.env.VITE_SITE_URL || process.env.SITE_URL || 'https://multitecnicos.com.ar';
 const SITEMAP_PATH = 'dist/sitemap.xml';
 
 const STATIC_ROUTES = [

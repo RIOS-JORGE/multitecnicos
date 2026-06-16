@@ -39,7 +39,7 @@ describe('JSON-LD Structured Data', () => {
 
       const parsed = parseJsonLd(orgLd!);
       expect(parsed['@type']).toBe('Organization');
-      expect(parsed.name).toBe('Directorio Profesional');
+      expect(parsed.name).toBe('Multitécnicos');
       expect(parsed.url).toBeTruthy();
       expect(parsed.contactPoint).toBeTruthy();
     });
@@ -68,7 +68,7 @@ describe('JSON-LD Structured Data', () => {
 
           const parsed = parseJsonLd(websiteLd!);
           expect(parsed['@type']).toBe('WebSite');
-          expect(parsed.name).toBe('Directorio Profesional');
+          expect(parsed.name).toBe('Multitécnicos');
           expect(parsed.url).toBeTruthy();
           expect(parsed.description).toBeTruthy();
           expect(parsed.inLanguage).toBe('es-AR');

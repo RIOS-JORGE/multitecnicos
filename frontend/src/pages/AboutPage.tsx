@@ -32,7 +32,7 @@ export default function AboutPage() {
 
         <section className="space-y-4 text-gray-700 leading-relaxed">
           <p>
-            <strong>Directorio Profesional</strong> nace con la idea de conectar
+            <strong>Multitécnicos</strong> nace con la idea de conectar
             a profesionales de distintos rubros con personas que necesitan sus
             servicios. Sabemos lo difícil que es encontrar un buen
             plomero, electricista, carpintero o cualquier otro profesional de
@@ -62,7 +62,7 @@ export default function AboutPage() {
 
           <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded text-sm space-y-2">
             <p>
-              Directorio Profesional es únicamente un directorio que conecta a profesionales
+              Multitécnicos es únicamente un directorio que conecta a profesionales
               con clientes. No somos prestadores de servicios ni empleadores de los profesionales
               listados.
             </p>

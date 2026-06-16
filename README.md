@@ -1,4 +1,4 @@
-# Directorio de Profesionales
+# Multitécnicos
 
 Directorio público de técnicos y profesionales de distintos rubros. Los administradores gestionan el contenido desde Strapi CMS y los visitantes buscan, filtran y contactan profesionales vía WhatsApp.
 
@@ -116,7 +116,7 @@ En el detalle de cada profesional, al clickear **"Contactar por WhatsApp"** se a
 2. Escribir su consulta en un textarea
 3. Al enviar, se abre WhatsApp con el mensaje prefomateado:
 
-> Hola, te contacto desde el Directorio de Profesionales.
+> Hola, te contacto desde Multitécnicos.
 > Especialidad: Electricidad
 > Consulta: [mensaje del cliente]
 
@@ -140,10 +140,10 @@ Cada página tiene su propio `<title>`, `<meta name="description">`, Open Graph 
 
 | Ruta | Title | Description |
 |------|-------|-------------|
-| `/` | Directorio Profesional | Hero + especialidades + destacados |
-| `/profesionales` | Profesionales — Directorio Profesional | Grid con todos los profesionales |
+| `/` | Multitécnicos | Hero + especialidades + destacados |
+| `/profesionales` | Profesionales — Multitécnicos | Grid con todos los profesionales |
 | `/profesionales/:slug` | `{Nombre} — {Especialidad}` | Descripción dinámica del profesional |
-| `/nosotros` | Nosotros — Directorio Profesional | Info estática |
+| `/nosotros` | Nosotros — Multitécnicos | Info estática |
 
 ### JSON-LD Structured Data
 Se inyectan schemas de Schema.org para rich snippets en Google:
@@ -182,7 +182,7 @@ npm run build
 ```
 User-agent: *
 Allow: /
-Sitemap: https://tudominio.com/sitemap.xml
+Sitemap: https://multitecnicos.com.ar/sitemap.xml
 ```
 
 > **Importante**: en producción, setear `VITE_SITE_URL` al buildear el frontend para que el sitemap y los OG images tengan URLs absolutas correctas.
@@ -262,8 +262,8 @@ Creá dos registros **A** en tu proveedor de DNS apuntando a la IP de la VPS:
 
 | Dominio | Registro | Destino |
 |---------|----------|---------|
-| `tudominio.com` | A | < IP de la VPS > |
-| `api.tudominio.com` | A | < IP de la VPS > |
+| `multitecnicos.com.ar` | A | < IP de la VPS > |
+| `api.multitecnicos.com.ar` | A | < IP de la VPS > |
 
 ### Backend (Strapi)
 
@@ -283,8 +283,8 @@ Editar `.env` con estos valores:
 | `PORT` | `1337` |
 | `DATABASE_CLIENT` | `sqlite` |
 | `NODE_ENV` | `production` |
-| `URL` | `https://api.tudominio.com` |
-| `CORS_ORIGIN` | `https://tudominio.com` |
+| `URL` | `https://api.multitecnicos.com.ar` |
+| `CORS_ORIGIN` | `https://multitecnicos.com.ar` |
 | `APP_KEYS` | Generar nuevo (ver abajo) |
 | `JWT_SECRET` | Generar nuevo (ver abajo) |
 | `API_TOKEN_SALT` | Generar nuevo (ver abajo) |
@@ -313,7 +313,7 @@ Configurá **Nginx** como reverse proxy:
 ```nginx
 server {
     listen 80;
-    server_name api.tudominio.com;
+    server_name api.multitecnicos.com.ar;
 
     location / {
         proxy_pass http://localhost:1337;
@@ -335,13 +335,13 @@ server {
 Strapi necesita saber qué dominio puede consumir la API. En desarrollo se usa `http://localhost:5173`, pero en producción hay que configurar `CORS_ORIGIN` en el `.env` del backend:
 
 ```
-CORS_ORIGIN=https://tudominio.com
+CORS_ORIGIN=https://multitecnicos.com.ar
 ```
 
 Si necesitás múltiples orígenes, separalos con coma:
 
 ```
-CORS_ORIGIN=https://tudominio.com,https://www.tudominio.com
+CORS_ORIGIN=https://multitecnicos.com.ar,https://www.multitecnicos.com.ar
 ```
 
 Strapi lee esta variable desde `config/middlewares.ts` y permite que el frontend haga fetch a la API sin errores de CORS.
@@ -352,8 +352,8 @@ Strapi lee esta variable desde `config/middlewares.ts` y permite que el frontend
 cd profesionales-directorio/frontend
 
 # Build con variables de entorno
-VITE_SITE_URL=https://tudominio.com \
-VITE_STRAPI_URL=https://api.tudominio.com \
+VITE_SITE_URL=https://multitecnicos.com.ar \
+VITE_STRAPI_URL=https://api.multitecnicos.com.ar \
 npm run build
 # → Se genera en frontend/dist/
 ```
@@ -363,7 +363,7 @@ Servilo con Nginx:
 ```nginx
 server {
     listen 80;
-    server_name tudominio.com;
+    server_name multitecnicos.com.ar;
     root /ruta/a/profesionales-directorio/frontend/dist;
 
     index index.html;
@@ -386,7 +386,7 @@ server {
 
 ```bash
 apt install -y certbot python3-certbot-nginx
-certbot --nginx -d tudominio.com -d api.tudominio.com
+certbot --nginx -d multitecnicos.com.ar -d api.multitecnicos.com.ar
 ```
 
 Esto edita automáticamente los server blocks de Nginx y configura el redirect HTTP → HTTPS. La renovación es automática via systemd timer.
@@ -436,8 +436,8 @@ pm2 restart strapi
 # Si cambió frontend/
 cd ../frontend
 npm ci                     # solo si cambió package-lock.json
-VITE_SITE_URL=https://tudominio.com \
-VITE_STRAPI_URL=https://api.tudominio.com \
+VITE_SITE_URL=https://multitecnicos.com.ar \
+VITE_STRAPI_URL=https://api.multitecnicos.com.ar \
 npm run build
 # nginx ya sirve los archivos nuevos automáticamente
 ```
@@ -449,8 +449,8 @@ Podés automatizarlo con un script `deploy.sh` en la raíz del proyecto o con un
 ```
                             Nginx
                     ┌───────────────────┐
-                    │  tudominio.com     │  → frontend/dist/ (estático)
-                    │  api.tudominio.com │  → proxy_pass localhost:1337 (Strapi)
+                    │  multitecnicos.com.ar     │  → frontend/dist/ (estático)
+                    │  api.multitecnicos.com.ar │  → proxy_pass localhost:1337 (Strapi)
                     └───────────────────┘
                             │
                     Strapi (PM2)

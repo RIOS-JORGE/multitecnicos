@@ -1,12 +1,12 @@
 import type { Specialty } from '../types/professional';
 
-export const SITE_NAME = 'Directorio Profesional';
+export const SITE_NAME = 'Multitécnicos';
 
 export const SITE_DESCRIPTION =
-  'Directorio de profesionales de mantenimiento y oficios. Encontrá plomeros, electricistas, carpinteros y más, todos verificados y cerca tuyo.';
+  'Multitécnicos — profesionales de mantenimiento y oficios. Encontrá plomeros, electricistas, carpinteros y más, todos verificados y cerca tuyo.';
 
 export const SITE_URL: string =
-  import.meta.env.VITE_SITE_URL || 'https://directorioprofesional.com';
+  import.meta.env.VITE_SITE_URL || 'https://multitecnicos.com.ar';
 
 export const SPECIALTIES: { value: Specialty; label: string; icon: string }[] = [
   { value: 'plomeria', label: 'Plomería', icon: '🔧' },
@@ -33,7 +33,7 @@ export const SOCIAL_PLATFORMS: Record<string, { label: string; color: string }> 
   tiktok: { label: 'TikTok', color: '#000000' },
 };
 
-export const DEFAULT_WA_MESSAGE = 'Hola, te contacto desde el Directorio de Profesionales.';
+export const DEFAULT_WA_MESSAGE = 'Hola, te contacto desde Multitécnicos.';
 
 export const REFERRAL_EMAIL: string =
   import.meta.env.VITE_REFERRAL_EMAIL || 'referencias@directorioprofesional.com';
@@ -42,6 +42,6 @@ export const WA_MESSAGE_TEMPLATE = (
   specialty: string,
   clientMessage: string
 ) =>
-  `Hola, te contacto desde el Directorio de Profesionales.\n` +
+  `Hola, te contacto desde Multitécnicos.\n` +
   `Especialidad: ${specialty}\n` +
   `Consulta: ${clientMessage}`;

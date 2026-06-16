@@ -41,7 +41,7 @@ describe('SEO Meta Tags', () => {
 
       await waitFor(
         () => {
-          expect(getTitle()).toContain('Directorio Profesional');
+          expect(getTitle()).toContain('Multitécnicos');
         },
         { timeout: 3000 }
       );
@@ -67,7 +67,7 @@ describe('SEO Meta Tags', () => {
         () => {
           const ogTitle = document.querySelector('meta[property="og:title"]');
           expect(ogTitle).not.toBeNull();
-          expect(ogTitle?.getAttribute('content')).toContain('Directorio Profesional');
+          expect(ogTitle?.getAttribute('content')).toContain('Multitécnicos');
         },
         { timeout: 3000 }
       );
@@ -138,7 +138,7 @@ describe('SEO Meta Tags', () => {
       renderWithProviders(<AboutPage />);
       const metaDesc = document.querySelector('meta[name="description"]');
       expect(metaDesc).not.toBeNull();
-      expect(metaDesc?.getAttribute('content')).toContain('Directorio Profesional');
+      expect(metaDesc?.getAttribute('content')).toContain('Multitécnicos');
     });
   });
 

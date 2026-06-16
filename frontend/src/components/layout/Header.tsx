@@ -15,7 +15,7 @@ export default function Header() {
           className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
           onClick={close}
         >
-          Directorio Profesional
+          Multitécnicos
         </Link>
 
         {/* Desktop nav */}

@@ -9,7 +9,7 @@ const organizationJsonLd = {
   '@type': 'Organization',
   name: SITE_NAME,
   url: SITE_URL,
-  description: 'Directorio de profesionales de mantenimiento y oficios',
+  description: 'Multitécnicos — profesionales de mantenimiento y oficios',
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'info@directorioprofesional.com',
