@@ -1,4 +1,4 @@
-import type { StrapiMedia } from './strapi';
+import type { StrapiMedia, StrapiBlock } from './strapi';
 
 export type Specialty =
   | 'plomeria'
@@ -28,7 +28,7 @@ export interface Professional {
   documentId: string;
   name: string;
   slug: string;
-  description: any; // Strapi Blocks JSON
+  description: string | StrapiBlock[];
   specialty: Specialty;
   photo: StrapiMedia | null;
   phone: string | null;

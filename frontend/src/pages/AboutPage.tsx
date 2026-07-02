@@ -96,8 +96,8 @@ export default function AboutPage() {
           <p>
             Si sos profesional y querés formar parte del directorio, o si tenés
             alguna consulta, escribinos a{' '}
-            <a href="mailto:info@directorioprofesional.com" className="text-blue-600 hover:underline">
-              info@directorioprofesional.com
+            <a href="mailto:info@multitecnicos.com.ar" className="text-blue-600 hover:underline">
+              info@multitecnicos.com.ar
             </a>
           </p>
         </section>

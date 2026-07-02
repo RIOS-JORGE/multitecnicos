@@ -17,7 +17,7 @@ describe('AboutPage', () => {
     expect(screen.getByText(/cómo funciona/i)).toBeInTheDocument();
     expect(screen.getByText(/contacto/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/info@directorioprofesional.com/i)
+      screen.getByText(/info@multitecnicos.com.ar/i)
     ).toBeInTheDocument();
   });
 });

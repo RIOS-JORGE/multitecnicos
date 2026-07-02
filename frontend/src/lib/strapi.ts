@@ -12,7 +12,7 @@ export function getStrapiMediaUrl(path: string | null | undefined): string | nul
 
 export function buildUrl(
   path: string,
-  params?: Record<string, any>
+  params?: Record<string, unknown>
 ): string {
   const base = `${STRAPI_URL}${path}`;
   if (!params) return base;
@@ -20,7 +20,7 @@ export function buildUrl(
   return query ? `${base}?${query}` : base;
 }
 
-async function strapiFetch<T>(path: string, params?: Record<string, any>): Promise<T> {
+async function strapiFetch<T>(path: string, params?: Record<string, unknown>): Promise<T> {
   const url = buildUrl(path, params);
   const res = await fetch(url);
   if (!res.ok) {
@@ -30,7 +30,7 @@ async function strapiFetch<T>(path: string, params?: Record<string, any>): Promi
 }
 
 export function fetchProfessionals(
-  params?: Record<string, any>
+  params?: Record<string, unknown>
 ): Promise<StrapiResponse<import('../types/professional').Professional>> {
   return strapiFetch('/api/professionals', {
     populate: {
