@@ -10,6 +10,28 @@
  * with static routes only and logs a warning. The build NEVER fails from this script.
  */
 
+import { readFileSync, existsSync, writeFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+// Load .env.production if VITE_STRAPI_URL is not set (sitemap runs standalone, not via Vite)
+if (!process.env.VITE_STRAPI_URL) {
+  const envPath = join(dirname(fileURLToPath(import.meta.url)), '..', '.env.production');
+  if (existsSync(envPath)) {
+    for (const line of readFileSync(envPath, 'utf-8').split('\n')) {
+      const trimmed = line.trim();
+      if (trimmed && !trimmed.startsWith('#')) {
+        const eqIdx = trimmed.indexOf('=');
+        if (eqIdx > 0) {
+          const key = trimmed.slice(0, eqIdx).trim();
+          const value = trimmed.slice(eqIdx + 1).trim();
+          process.env[key] = value;
+        }
+      }
+    }
+  }
+}
+
 const STRAPI_URL = process.env.VITE_STRAPI_URL || '';
 const BASE_URL = process.env.VITE_SITE_URL || process.env.SITE_URL || 'https://multitecnicos.com.ar';
 const SITEMAP_PATH = 'dist/sitemap.xml';
@@ -109,8 +131,7 @@ async function main() {
   const xml = buildXml(allRoutes);
 
   // Write dist/sitemap.xml
-  const fs = await import('fs');
-  fs.writeFileSync(SITEMAP_PATH, xml, 'utf-8');
+  writeFileSync(SITEMAP_PATH, xml, 'utf-8');
   console.log(`[sitemap] Wrote ${SITEMAP_PATH} with ${allRoutes.length} URLs`);
 }
 
