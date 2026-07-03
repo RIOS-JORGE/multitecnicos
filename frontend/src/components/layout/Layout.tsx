@@ -12,7 +12,7 @@ const organizationJsonLd = {
   description: 'Multitécnicos — profesionales de mantenimiento y oficios',
   contactPoint: {
     '@type': 'ContactPoint',
-    email: 'info@multitecnicos.com.ar',
+    email: 'multitecnicos.info@gmail.com',
     contactType: 'customer service',
   },
 };

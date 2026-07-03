@@ -36,7 +36,7 @@ export const SOCIAL_PLATFORMS: Record<string, { label: string; color: string }> 
 export const DEFAULT_WA_MESSAGE = 'Hola, te contacto desde Multitécnicos.';
 
 export const REFERRAL_EMAIL: string =
-  import.meta.env.VITE_REFERRAL_EMAIL || 'referencias@multitecnicos.com.ar';
+  import.meta.env.VITE_REFERRAL_EMAIL || 'multitecnicos.info@gmail.com';
 
 export const WA_MESSAGE_TEMPLATE = (
   specialty: string,

@@ -17,7 +17,7 @@ describe('AboutPage', () => {
     expect(screen.getByText(/cómo funciona/i)).toBeInTheDocument();
     expect(screen.getByText(/contacto/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/info@multitecnicos.com.ar/i)
-    ).toBeInTheDocument();
+      screen.getAllByText(/multitecnicos.info@gmail.com/i).length
+    ).toBeGreaterThanOrEqual(1);
   });
 });
